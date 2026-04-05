@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-cold-base text-cold-text antialiased;
+  font-family: Inter, "Noto Sans KR", system-ui, -apple-system, sans-serif;
+}
+
+.cold-card {
+  @apply rounded-2xl border border-cold-line/60 bg-cold-panel/80 shadow-cold backdrop-blur;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
