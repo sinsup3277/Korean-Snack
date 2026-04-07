@@ -113,3 +113,32 @@ npm run dev
 ## 9) 문서 연계
 
 - 개발 프레임/단계 확장 계획: `agent.md`
+
+---
+
+
+## 10) Vercel 배포 가이드
+
+### 필수 설정
+- Vercel 프로젝트의 **Root Directory**를 저장소 루트(`/`)로 설정
+- Node.js는 Vercel 기본 최신 LTS 사용
+- 환경변수는 Vercel Project Settings에서만 관리 (`.env*` 커밋 금지)
+
+### 현재 저장소 반영 내용
+- `vercel.json` 추가: Next.js 프레임워크, `npm ci` 설치, `npm run build` 빌드 명령 고정
+- `next.config.mjs` 보안 헤더 추가
+  - `X-Content-Type-Options: nosniff`
+  - `X-Frame-Options: DENY`
+  - `Referrer-Policy: strict-origin-when-cross-origin`
+- `next/image` 원격 도메인 allowlist 유지 (`images.unsplash.com`)
+
+### 배포 절차
+```bash
+npm ci
+npm run lint
+npm run build
+```
+
+- PR 생성 시 Vercel Preview 배포 확인
+- `main` 머지 후 Production 배포 확인
+
